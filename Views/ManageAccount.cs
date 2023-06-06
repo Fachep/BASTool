@@ -1,27 +1,27 @@
-﻿using BiligameAccountSwitchTool.Helpers;
-using BiligameAccountSwitchTool.Models;
-using BiligameAccountSwitchTool.Services;
+﻿using BASTool.Helpers;
+using BASTool.Models;
+using BASTool.Services;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
 using System.Text;
 using System.Text.Json;
 
-namespace BiligameAccountSwitchTool.Views
+namespace BASTool.Views
 {
     public partial class ManageAccount : Form
     {
         private readonly AccountService _accountService = AppConfig.GetService<AccountService>();
-        private readonly ObservableWarpper<GameAccount> _currentAccount = new(GameAccount.noneAccount);
+        private readonly ObservableWrapper<GameAccount> _currentAccount = new(GameAccount.noneAccount);
         private Game? _game;
         private BindingList<GameAccount>? _accounts;
         private readonly ComboBox _comboBoxGame;
-        private readonly ObservableWarpper<BindingList<GameAccount>> _accountsWarpped;
+        private readonly ObservableWrapper<BindingList<GameAccount>> _accountsWarpped;
         private BindingSource? _bsAccounts;
         private SDKHelper? _sdkHelper;
         private string? _appKey;
 
-        public ManageAccount(ComboBox comboBoxGame, ObservableWarpper<BindingList<GameAccount>> accounts)
+        public ManageAccount(ComboBox comboBoxGame, ObservableWrapper<BindingList<GameAccount>> accounts)
         {
             _comboBoxGame = comboBoxGame;
             _accountsWarpped = accounts;

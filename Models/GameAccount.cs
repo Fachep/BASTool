@@ -1,6 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace BiligameAccountSwitchTool.Models
+namespace BASTool.Models
 {
     public class GameAccount : ObservableObject
     {

@@ -1,4 +1,4 @@
-﻿namespace BiligameAccountSwitchTool.Views
+﻿namespace BASTool.Views
 {
     partial class ManageGame
     {

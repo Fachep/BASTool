@@ -1,8 +1,8 @@
-﻿using BiligameAccountSwitchTool.Services;
+﻿using BASTool.Services;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
-namespace BiligameAccountSwitchTool
+namespace BASTool
 {
     internal static class AppConfig
     {

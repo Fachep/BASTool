@@ -1,7 +1,7 @@
 ﻿using Dapper;
 using Microsoft.Data.Sqlite;
 
-namespace BiligameAccountSwitchTool.Services
+namespace BASTool.Services
 {
     internal class DatabaseService
     {

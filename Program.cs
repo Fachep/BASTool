@@ -1,4 +1,4 @@
-namespace BiligameAccountSwitchTool
+namespace BASTool
 {
     internal static class Program
     {

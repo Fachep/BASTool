@@ -1,6 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 
-namespace BiligameAccountSwitchTool.Helpers
+namespace BASTool.Helpers
 {
     internal class DllInvoker
     {

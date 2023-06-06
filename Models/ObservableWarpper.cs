@@ -1,8 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 
-namespace BiligameAccountSwitchTool.Models
+namespace BASTool.Models
 {
-    public class ObservableWarpper<T> : ObservableObject
+    public class ObservableWrapper<T> : ObservableObject
     {
         private T _value;
 
@@ -12,9 +12,9 @@ namespace BiligameAccountSwitchTool.Models
             set => SetProperty(ref _value, value);
         }
 
-        public ObservableWarpper(T value)
+        public ObservableWrapper(T value)
         {
-            SetProperty(ref _value, value);
+            _value = value;
         }
     }
 }

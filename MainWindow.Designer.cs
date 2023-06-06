@@ -1,6 +1,6 @@
-﻿using BiligameAccountSwitchTool.Views;
+﻿using BASTool.Views;
 
-namespace BiligameAccountSwitchTool
+namespace BASTool
 {
     partial class MainWindow
     {

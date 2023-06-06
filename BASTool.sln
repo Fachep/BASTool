@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BiligameAccountSwitchTool", "BiligameAccountSwitchTool.csproj", "{C58D374C-F758-48FB-86D0-7D67D542EB7E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BASTool", "BASTool.csproj", "{C58D374C-F758-48FB-86D0-7D67D542EB7E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

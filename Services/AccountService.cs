@@ -1,9 +1,9 @@
-﻿using BiligameAccountSwitchTool.Helpers;
-using BiligameAccountSwitchTool.Models;
+﻿using BASTool.Helpers;
+using BASTool.Models;
 using Dapper;
 using Microsoft.Win32;
 
-namespace BiligameAccountSwitchTool.Services
+namespace BASTool.Services
 {
     internal class AccountService
     {

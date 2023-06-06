@@ -1,7 +1,7 @@
-﻿using BiligameAccountSwitchTool.Models;
+﻿using BASTool.Models;
 using Dapper;
 
-namespace BiligameAccountSwitchTool.Services
+namespace BASTool.Services
 {
     internal class GameService
     {

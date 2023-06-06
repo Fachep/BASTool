@@ -1,6 +1,6 @@
 ﻿using Microsoft.Win32;
 
-namespace BiligameAccountSwitchTool.Helpers
+namespace BASTool.Helpers
 {
     internal abstract class IEVersionHelper
     {

@@ -1,8 +1,8 @@
-﻿using BiligameAccountSwitchTool.Helpers;
-using BiligameAccountSwitchTool.Services;
+﻿using BASTool.Helpers;
+using BASTool.Services;
 using System.Diagnostics;
 
-namespace BiligameAccountSwitchTool.Views
+namespace BASTool.Views
 {
     public partial class HelpWindow : Form
     {

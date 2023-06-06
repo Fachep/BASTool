@@ -1,17 +1,17 @@
-using BiligameAccountSwitchTool.Helpers;
-using BiligameAccountSwitchTool.Models;
-using BiligameAccountSwitchTool.Services;
-using BiligameAccountSwitchTool.Views;
+using BASTool.Helpers;
+using BASTool.Models;
+using BASTool.Services;
+using BASTool.Views;
 using System.ComponentModel;
 
-namespace BiligameAccountSwitchTool
+namespace BASTool
 {
     public partial class MainWindow : Form
     {
         private readonly GameService _gameservice = AppConfig.GetService<GameService>();
         private readonly AccountService _accountService = AppConfig.GetService<AccountService>();
-        private readonly ObservableWarpper<BindingList<GameAccount>> _accounts = new(new());
-        private readonly ObservableWarpper<BindingList<Game>> _games;
+        private readonly ObservableWrapper<BindingList<GameAccount>> _accounts = new(new());
+        private readonly ObservableWrapper<BindingList<Game>> _games;
         private readonly BindingSource _bsGames;
         private readonly BindingSource _bsAccounts;
 
@@ -21,7 +21,7 @@ namespace BiligameAccountSwitchTool
 
         public MainWindow()
         {
-            _games = new ObservableWarpper<BindingList<Game>>(new BindingList<Game>(_gameservice.AllGamesList));
+            _games = new ObservableWrapper<BindingList<Game>>(new BindingList<Game>(_gameservice.AllGamesList));
             InitializeComponent();
             _bsGames = new BindingSource(new BindingSource(_games, null), "Value");
             _bsAccounts = new BindingSource(new BindingSource(_accounts, null), "Value");

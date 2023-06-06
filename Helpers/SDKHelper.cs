@@ -1,7 +1,7 @@
 ﻿using System.IO.Compression;
 using System.Security.Cryptography;
 
-namespace BiligameAccountSwitchTool.Helpers
+namespace BASTool.Helpers
 {
     internal class SDKHelper
     {

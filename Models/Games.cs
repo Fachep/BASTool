@@ -2,7 +2,7 @@
 using System.ComponentModel;
 using System.Reflection;
 
-namespace BiligameAccountSwitchTool.Models
+namespace BASTool.Models
 {
     public enum GameIdEnum
     {

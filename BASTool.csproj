@@ -14,8 +14,9 @@
     <Title>BASTool</Title>
     <Authors>Fachep</Authors>
     <RepositoryUrl>https://github.com/Fachep/BiligameAccountSwitchTool</RepositoryUrl>
-    <StartupObject>BiligameAccountSwitchTool.Program</StartupObject>
+    <StartupObject>BASTool.Program</StartupObject>
     <AssemblyName>BASTool</AssemblyName>
+    <PackageId>BiligameAccountSwitchTool</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
