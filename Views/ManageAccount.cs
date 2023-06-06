@@ -16,7 +16,7 @@ namespace BASTool.Views
         private Game? _game;
         private BindingList<GameAccount>? _accounts;
         private readonly ComboBox _comboBoxGame;
-        private readonly ObservableWrapper<BindingList<GameAccount>> _accountsWarpped;
+        private readonly ObservableWrapper<BindingList<GameAccount>> _accountsWrapped;
         private BindingSource? _bsAccounts;
         private SDKHelper? _sdkHelper;
         private string? _appKey;
@@ -24,7 +24,7 @@ namespace BASTool.Views
         public ManageAccount(ComboBox comboBoxGame, ObservableWrapper<BindingList<GameAccount>> accounts)
         {
             _comboBoxGame = comboBoxGame;
-            _accountsWarpped = accounts;
+            _accountsWrapped = accounts;
             InitializeComponent();
             listBoxAccounts.DisplayMember = "Name";
             textBoxNickName.DataBindings.Add("Text", _currentAccount, "Value.Name", false, DataSourceUpdateMode.Never, string.Empty);
@@ -37,7 +37,7 @@ namespace BASTool.Views
         {
             _sdkHelper = null;
             _game = (Game)_comboBoxGame.SelectedItem;
-            _accounts = _accountsWarpped.Value;
+            _accounts = _accountsWrapped.Value;
             _accounts.Add(GameAccount.newAccount);
             _bsAccounts = new BindingSource(_accounts, null);
 

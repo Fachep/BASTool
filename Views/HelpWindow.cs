@@ -7,18 +7,6 @@ namespace BASTool.Views
     public partial class HelpWindow : Form
     {
         private readonly DatabaseService _databaseService = AppConfig.GetService<DatabaseService>();
-        private const string vbs = """
-            Function event_DocumentComplete(s, e)
-                Set win = objIE.Document.parentWindow
-                MsgBox win.eval("a=[];for(key in localStorage){r=/([0-9]+)-uname/.exec(key);if(r)a.push(r[1])};a.join()"),vbOKOnly,"(按Ctrl+C复制)"
-                objIE.Quit
-            End Function
-
-            Set objIE = Wscript.CreateObject("InternetExplorer.Application","event_")
-            objIE.Visible = True
-            objIE.navigate "https://sdk.biligame.com/"
-            Wscript.Sleep 5000
-            """;
 
         public HelpWindow()
         {
@@ -29,6 +17,7 @@ namespace BASTool.Views
                 运行信息：
                     IE 版本 = {IEVersionHelper.Version}
                     数据库版本 = {_databaseService.UserVersion}
+                    数据目录： {AppConfig.DataPath}
                 打开脚本：
                     获取当前IE中存储的游戏ID列表
 
@@ -46,8 +35,22 @@ namespace BASTool.Views
 
         private void buttonOpenVBS_Click(object sender, EventArgs e)
         {
-            if (!File.Exists("GetGameId.vbs")) File.WriteAllText("GetGameId.vbs", vbs);
-            Process.Start(new ProcessStartInfo("wscript", "GetGameId.vbs") { UseShellExecute = true });
+            try
+            {
+                var scriptPath = Path.Combine(AppConfig.DataPath, "GetGameId.vbs");
+                if (!File.Exists(scriptPath))
+                {
+                    using var srcStream = GetType().Assembly.GetManifestResourceStream("BASTool.GetGameId.vbs")!;
+                    int len = (int)srcStream.Length;
+                    byte[] buffer = new byte[len];
+                    srcStream.Read(buffer, 0, len);
+                    File.WriteAllBytes(scriptPath, buffer);
+                }
+                Process.Start(new ProcessStartInfo("wscript", scriptPath) { UseShellExecute = true });
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

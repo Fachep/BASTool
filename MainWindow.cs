@@ -8,7 +8,7 @@ namespace BASTool
 {
     public partial class MainWindow : Form
     {
-        private readonly GameService _gameservice = AppConfig.GetService<GameService>();
+        private readonly GameService _gameService = AppConfig.GetService<GameService>();
         private readonly AccountService _accountService = AppConfig.GetService<AccountService>();
         private readonly ObservableWrapper<BindingList<GameAccount>> _accounts = new(new());
         private readonly ObservableWrapper<BindingList<Game>> _games;
@@ -21,7 +21,7 @@ namespace BASTool
 
         public MainWindow()
         {
-            _games = new ObservableWrapper<BindingList<Game>>(new BindingList<Game>(_gameservice.AllGamesList));
+            _games = new ObservableWrapper<BindingList<Game>>(new BindingList<Game>(_gameService.AllGamesList));
             InitializeComponent();
             _bsGames = new BindingSource(new BindingSource(_games, null), "Value");
             _bsAccounts = new BindingSource(new BindingSource(_accounts, null), "Value");
@@ -61,7 +61,7 @@ namespace BASTool
         {
             manageGameWindow ??= new ManageGame();
             manageGameWindow.ShowDialog();
-            _games.Value = new BindingList<Game>(_gameservice.AllGamesList);
+            _games.Value = new BindingList<Game>(_gameService.AllGamesList);
         }
 
         private void buttonHelp_Click(object sender, EventArgs e)

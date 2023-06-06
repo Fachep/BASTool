@@ -9,38 +9,27 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <Platforms>AnyCPU;x64</Platforms>
+    <Platforms>x64</Platforms>
     <SupportedOSPlatformVersion>7.0</SupportedOSPlatformVersion>
     <Title>BASTool</Title>
     <Authors>Fachep</Authors>
-    <RepositoryUrl>https://github.com/Fachep/BiligameAccountSwitchTool</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Fachep/BASTool</RepositoryUrl>
     <StartupObject>BASTool.Program</StartupObject>
     <AssemblyName>BASTool</AssemblyName>
     <PackageId>BiligameAccountSwitchTool</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="GetGameId.vbs">
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
     <PackageReference Include="Dapper" Version="2.0.123" />
     <PackageReference Include="Microsoft.Data.Sqlite" Version="7.0.5" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0">
-      <TreatAsUsed>true</TreatAsUsed>
-    </PackageReference>
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
     <Manifest Include="$(ApplicationManifest)" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Properties\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="GetGameId.vbs">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="README.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
   </ItemGroup>
 
 </Project>

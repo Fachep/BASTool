@@ -22,7 +22,7 @@ namespace BASTool.Helpers
         private delegate int SDKShowLoginPanelDelegate(string szAppKey, bool bBackToLogin, LoginCallbackDelegate CallBack);
         private delegate int SDKLogoutDelegate();
 
-        public delegate void LoginCallbackDelegate(string buf, int buflen);
+        public delegate void LoginCallbackDelegate(string buf, int bufLen);
 
         private SDKInitDelegate? SDKInit;
         private SDKShowLoginPanelDelegate? SDKShowLoginPanel;

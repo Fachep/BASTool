@@ -38,6 +38,7 @@
             listBoxAccounts = new ListBox();
             buttonDeleteAccount = new Button();
             buttonCancelDownload = new Button();
+            labelTip = new Label();
             SuspendLayout();
             // 
             // textBoxNickName
@@ -133,11 +134,22 @@
             buttonCancelDownload.Visible = false;
             buttonCancelDownload.Click += buttonCancelDownload_Click;
             // 
+            // labelTip
+            // 
+            labelTip.AutoSize = true;
+            labelTip.Enabled = false;
+            labelTip.Location = new Point(26, 91);
+            labelTip.Name = "labelTip";
+            labelTip.Size = new Size(128, 17);
+            labelTip.TabIndex = 11;
+            labelTip.Text = "仅支持记住密码的账号";
+            // 
             // ManageAccount
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(540, 180);
+            Controls.Add(labelTip);
             Controls.Add(buttonCancelDownload);
             Controls.Add(buttonDeleteAccount);
             Controls.Add(listBoxAccounts);
@@ -173,5 +185,6 @@
         private ListBox listBoxAccounts;
         private Button buttonDeleteAccount;
         private Button buttonCancelDownload;
+        private Label labelTip;
     }
 }
