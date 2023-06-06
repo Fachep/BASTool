@@ -11,7 +11,7 @@ namespace BASTool.Helpers
         [DllImport("kernel32.dll")]
         private static extern bool FreeLibrary(IntPtr hModule);
 
-        private IntPtr _hModule;
+        private readonly IntPtr _hModule;
 
         public DllInvoker(string lpFileName)
         {

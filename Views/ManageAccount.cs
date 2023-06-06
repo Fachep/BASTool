@@ -4,6 +4,7 @@ using BASTool.Services;
 using System.ComponentModel;
 using System.Configuration;
 using System.Data;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Text.Json;
 
@@ -135,14 +136,29 @@ namespace BASTool.Views
             }
         }
 
-        private void LoginCallback(string buf, int _)
+        private void LoginCallback(string buf)
         {
             try
             {
                 using var jsonDoc = JsonDocument.Parse(buf);
                 var rootEle = jsonDoc.RootElement;
                 var dataEle = rootEle.GetProperty("data");
-                if (rootEle.GetProperty("code").GetInt32() == 0) RefreshAccount();
+                if (rootEle.GetProperty("code").GetInt32() == 0)
+                {
+                    var name = dataEle.GetProperty("uname").GetString();
+                    new Task(() =>
+                    {
+                        Invoke(() => RefreshAccount());
+                        if (name != null)
+                        {
+                            Thread.Sleep(1000);
+                            Invoke(() => {
+                                    if (selectedAccount == GameAccount.newAccount && textBoxNickName.Text == textBoxUName.Text)
+                                        textBoxNickName.Text = name;
+                            });
+                        }
+                    }).Start();
+                };
             }
             catch { }
         }
@@ -157,8 +173,8 @@ namespace BASTool.Views
             _sdkHelper ??= new SDKHelper(Handle, _game!.Id, _appKey);
             try
             {
-                if (!_sdkHelper.Loaded) _sdkHelper.Load();
-                _sdkHelper.ShowPanel(LoginCallback);
+                if (!_sdkHelper.Loaded) _sdkHelper.Load(LoginCallback);
+                _sdkHelper.ShowPanel();
             }
             catch (FileNotFoundException)
             {

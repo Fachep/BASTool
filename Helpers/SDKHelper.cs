@@ -1,4 +1,5 @@
 ﻿using System.IO.Compression;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 
 namespace BASTool.Helpers
@@ -18,11 +19,11 @@ namespace BASTool.Helpers
         private readonly string _appKey;
         private DllInvoker? _sdkInvoker;
 
-        private delegate int SDKInitDelegate(string szGameId, IntPtr hwndParent);
-        private delegate int SDKShowLoginPanelDelegate(string szAppKey, bool bBackToLogin, LoginCallbackDelegate CallBack);
+        private delegate int SDKInitDelegate(IntPtr szGameId, IntPtr hwndParent);
+        private delegate int SDKShowLoginPanelDelegate(IntPtr szAppKey, bool bBackToLogin, LoginCallbackDelegate CallBack);
         private delegate int SDKLogoutDelegate();
 
-        public delegate void LoginCallbackDelegate(string buf, int bufLen);
+        public delegate void LoginCallbackDelegate(IntPtr buf, int bufLen);
 
         private SDKInitDelegate? SDKInit;
         private SDKShowLoginPanelDelegate? SDKShowLoginPanel;
@@ -37,7 +38,9 @@ namespace BASTool.Helpers
 
         public bool Loaded => _sdkInvoker?.Loaded == true;
 
-        public int Load()
+        private Action<string>? _callback;
+
+        public int Load(Action<string> callback)
         {
             if (Loaded) return 0;
             if (!File.Exists(Path.Combine(AppConfig.DataPath, SDKFileName))) throw new FileNotFoundException();
@@ -46,19 +49,26 @@ namespace BASTool.Helpers
             SDKInit = (SDKInitDelegate?)_sdkInvoker.Invoker("SDKInit", typeof(SDKInitDelegate));
             SDKShowLoginPanel = (SDKShowLoginPanelDelegate?)_sdkInvoker.Invoker("SDKShowLoginPanel", typeof(SDKShowLoginPanelDelegate));
             SDKLogout = (SDKLogoutDelegate?)_sdkInvoker.Invoker("SDKLogout", typeof (SDKLogoutDelegate));
+            _callback = callback;
             if (SDKInit == null || SDKShowLoginPanel == null || SDKLogout == null)
             {
                 _sdkInvoker = null;
                 throw new FileLoadException();
             }
-            return SDKInit(_gameId.ToString(), _hwnd);
+            return SDKInit(Marshal.StringToCoTaskMemUTF8(_gameId.ToString()), _hwnd);
         }
 
-        public int ShowPanel(LoginCallbackDelegate callback)
+        public int ShowPanel()
         {
             if (!Loaded) return -1;
             SDKLogout!();
-            return SDKShowLoginPanel!(_appKey, true, callback);
+            return SDKShowLoginPanel!(Marshal.StringToCoTaskMemUTF8(_appKey), true, LoginCallback);
+        }
+
+        private void LoginCallback(IntPtr buf, int bufLen)
+        {
+            var strBuf = Marshal.PtrToStringUTF8(buf, bufLen);
+            _callback!(strBuf);
         }
 
         public static class DownloadSDK
