@@ -1,6 +1,6 @@
-Function event_DocumentComplete(s, e)
+ÔªøFunction event_DocumentComplete(s, e)
     Set win = objIE.Document.parentWindow
-    MsgBox win.eval("a=[];for(key in localStorage){r=/([0-9]+)-uname/.exec(key);if(r)a.push(r[1])};a.join()"),vbOKOnly,"(∞¥Ctrl+C∏¥÷∆)"
+    MsgBox win.eval("a=[];for(key in localStorage){r=/([0-9]+)-uname/.exec(key);if(r)a.push(r[1])};a.join()"),vbOKOnly,"(ÊåâCtrl+CÂ§çÂà∂)"
     objIE.Quit
 End Function
 

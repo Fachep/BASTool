@@ -16,12 +16,10 @@
     <StartupObject>BASTool.Program</StartupObject>
     <AssemblyName>BASTool</AssemblyName>
     <PackageId>BiligameAccountSwitchTool</PackageId>
-    <AssemblyVersion>1.0.1.0</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="GetGameId.vbs">
-    </EmbeddedResource>
+    <EmbeddedResource Include="GetGameId.vbs" />
   </ItemGroup>
 
   <ItemGroup>
