@@ -1,0 +1,67 @@
+name: Preview Build
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  get-revision:
+    runs-on: windows-latest
+    outputs:
+      version: ${{ steps.revision.outputs.result }}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Revision
+        uses: actions/github-script@v6
+        id: revision
+        with:
+          result-encoding: string
+          script: |
+            let lastRelease = await github.rest.repos.getLatestRelease({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+            }).catch(() => null);
+            let tagVersion = /^v?(?<v>([0-9]+\.){2}[0-9]+)(\.[0-9]+)?$/i
+                .exec(lastRelease?.data?.tag_name)?.groups?.v ?? "1.0.0";
+            console.log(`Latest version: ${tagVersion}`);
+            let tagTime = Date.parse(lastRelease?.data?.created_at);
+            if (Number.isNaN(tagTime)) tagTime = 1685577600000;
+            let revision = `${tagVersion}.${Math.ceil((Date.now()-tagTime)/864e5)}`;
+            console.log(`Revision: ${revision}`);
+            return revision;
+
+  build:
+    runs-on: windows-latest
+    needs: get-revision
+    strategy:
+      matrix:
+        configuration: ["Release", "Debug"]
+
+    env:
+      Configuration: ${{ matrix.configuration }}
+      Platform: "x64"
+      Version: ${{ needs.get-revision.outputs.version }}
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: "7.0.x"
+      - uses: actions/cache@v3
+        with:
+          path: ~/.nuget/packages
+          key: nuget-${{ hashFiles('*.csproj') }}
+      - name: Build ${{ env.Configuration }} for ${{ env.Platform }}
+        run: >
+          dotnet publish -c ${{ env.Configuration }} -r "win-${{ env.Platform }}"
+          -p:PublishSingleFile=true -p:PublishReadyToRun=true -p:Version=${{ env.Version }}
+          --no-self-contained -o "build/"
+      - name: Remove pdb
+        if: ${{ env.Configuration == 'Release' }}
+        run: Remove-Item "build/*.pdb" -Force
+      - uses: actions/upload-artifact@v3
+        with:
+          name: BASTool_${{ env.Version }}_${{ env.Platform }}_${{ env.Configuration }}
+          path: build/
