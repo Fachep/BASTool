@@ -1,28 +1,46 @@
 <div align="center">
 
 # BASTool
+[![Latest Commit](https://github.com/Fachep/BASTool/actions/workflows/preview.yml/badge.svg)](https://github.com/Fachep/BASTool/actions/workflows/preview.yml)
+
 Biligame Account Switch Tool<br/>
-Bilibili ÓÎÏ·ÕËºÅÇĞ»»¹¤¾ß
+Bilibili æ¸¸æˆè´¦å·åˆ‡æ¢å·¥å…·
 
 </div>
 
-Í¨¹ı WebBrowser ¿Ø¼ş¶ÁĞ´ IE ä¯ÀÀÆ÷µÄ localStorage »º´æÊµÏÖ¶Ô²¿·ÖÊ¹ÓÃ Bilibili ÕËºÅµÇÂ¼
+é€šè¿‡ WebBrowser æ§ä»¶è¯»å†™ IE æµè§ˆå™¨çš„ localStorage ç¼“å­˜å®ç°å¯¹éƒ¨åˆ†ä½¿ç”¨ Bilibili è´¦å·ç™»å½•
 
-²¿·ÖÓÎÏ·Ö§³Öµ÷³öSDKµÇÂ¼´°¿Ú[^opensdk]
+å†…ç½®æ”¯æŒçš„æ¸¸æˆå¯è°ƒå‡ºSDKç™»å½•çª—å£[^opensdk]
 
-£¨µÚÒ»´ÎÃşC#ºÍ.NET£¬Ğ´³öÊºÉ½¼ûÁÂ)
+ï¼ˆç¬¬ä¸€æ¬¡æ‘¸C#å’Œ.NETï¼Œå†™å‡ºå±å±±è§è°…)
 
-## ÄÚÖÃÖ§³ÖµÄÓÎÏ·
+## ä¸‹è½½
+å‘å¸ƒç‰ˆæœ¬ï¼šå‰å¾€ [Release](releases/) é¡µé¢ä¸‹è½½ã€‚
 
-- Ô­Éñ Genshin Impact (hk4e)
-- ±À»µ£ºĞÇñ·ÌúµÀ Honkai: Star Rail (hkrpg)
-- ¿É×Ô¶¨ÒåÓÎÏ· (SDK < 4.0)
+ä¹Ÿå¯å‰å¾€ [Actions](actions/workflows/preview.yml) é¡µé¢æ‰¾åˆ°æœ€åä¸€æ¬¡æäº¤çš„è‡ªåŠ¨æ„å»ºç‰ˆæœ¬ã€‚
+
+ç³»ç»Ÿè¦æ±‚ï¼š
+- .NET 7 æ¡Œé¢è¿è¡Œæ—¶
+- Windows 7 åŠä»¥ä¸Šç³»ç»Ÿ
+- **Internet Explorer** 9 åŠä»¥ä¸Šç‰ˆæœ¬
+
+## å†…ç½®æ”¯æŒçš„æ¸¸æˆ
+
+- åŸç¥ Genshin Impact (hk4e)
+- å´©åï¼šæ˜Ÿç©¹é“é“ Honkai: Star Rail (hkrpg)
+- å¯è‡ªå®šä¹‰æ¸¸æˆ (SDK < 4.0)
+
+## å…è´£å£°æ˜
+é¡¹ç›®ä»¥ MIT è®¸å¯è¯å‘å¸ƒã€‚
+ä»…ä¾›æŠ€æœ¯äº¤æµä¸å­¦ä¹ ï¼Œè¯·å‹¿ç”¨äºéæ³•ç›®çš„ã€‚
+ä½¿ç”¨æœ¬é¡¹ç›®é€ æˆçš„ä»»ä½•åæœï¼Œé¡¹ç›®ä½œè€…ä¸æ‰¿æ‹…æ³•å¾‹è´£ä»»ã€‚
 
 ## Todo
 
-- [ ] ÖØ¹¹ÓÎÏ·ÁĞ±íÏà¹Ø
-- [ ] £¨¿ÉĞĞĞÔÎ´Öª£©³¢ÊÔÖ§³Ö SDK 4.0+ [^versiongte4]
-- [ ] £¨¿ÉÄÜ£©WPF ÖØ¹¹
+- [ ] é‡æ„æ¸¸æˆåˆ—è¡¨ç›¸å…³
+- [ ] AccountService GetAccountFromIExploreræ”¹ä¸ºå¼‚æ­¥æ–¹æ³•
+- [ ] ï¼ˆå¯è¡Œæ€§æœªçŸ¥ï¼‰å°è¯•æ”¯æŒ SDK 4.0+ [^versiongte4]
+- [ ] ï¼ˆå¯èƒ½ï¼‰WPF é‡æ„
 
-[^opensdk]: ĞèÒª¿ÉÖ´ĞĞÎÄ¼şÍ¬ÃûµÄ.configÖĞ¶¨Òå appKey
-[^versiongte4]: Ä¿Ç°Ã»·¢ÏÖ/½Ó´¥²»µ½Ê¹ÓÃ´Ë°æ±¾SDKµÄÓÎÏ·¡£´ËÍâ£¬4.0+Ê¹ÓÃ×Ô´øµÄ cef ´úÌæie£¬Ôİ²»È·¶¨ÊÇ·ñÄÜ¶ÁÈ¡»º´æ£¬Èç¹ûÄúÄÜÌá¹©°ïÖúÇëÌá½» [issue](issues)
+[^opensdk]: éœ€è¦**å¯æ‰§è¡Œæ–‡ä»¶åŒåçš„ .config æ–‡ä»¶**ä¸­å®šä¹‰ appKeyï¼Œå¦‚ä¸éœ€è¦æ­¤é¡¹åŠŸèƒ½å¯åˆ é™¤è¯¥æ–‡ä»¶ï¼Œåç»­å¯èƒ½ä¼šå°†æ­¤æ–‡ä»¶åµŒå…¥ç¨‹åºã€‚
+[^versiongte4]: ç›®å‰æ²¡å‘ç°/æ¥è§¦ä¸åˆ°ä½¿ç”¨4.0+ç‰ˆæœ¬SDKçš„æ¸¸æˆï¼Œå¦‚æœæ‚¨èƒ½æä¾›ä¿¡æ¯è¯·æäº¤ [issue](issues)ã€‚
