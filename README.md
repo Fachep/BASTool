@@ -1,23 +1,23 @@
 <div align="center">
 
 # BASTool
-[![Latest Commit](https://github.com/Fachep/BASTool/actions/workflows/preview.yml/badge.svg)](https://github.com/Fachep/BASTool/actions/workflows/preview.yml)
+[![Latest Commit](../../actions/workflows/preview.yml/badge.svg)](../../actions/workflows/preview.yml)
 
 Biligame Account Switch Tool<br/>
 Bilibili 游戏账号切换工具
 
 </div>
 
-通过 WebBrowser 控件读写 IE 浏览器的 localStorage 缓存实现对部分使用 Bilibili 账号登录
+保存并切换使用 Biligame SDK (< 4.0) 登录的账号凭据
 
 内置支持的游戏可调出SDK登录窗口[^opensdk]
 
-（第一次摸C#和.NET，写出屎山见谅)
+（第一次摸C#和.NET，写出屎山见谅）
 
 ## 下载
-发布版本：前往 [Release](releases/) 页面下载。
+发布版本：前往 [Release](../../releases/) 页面下载。
 
-也可前往 [Actions](actions/workflows/preview.yml) 页面找到最后一次提交的自动构建版本。
+也可前往 [Actions](../../actions/workflows/preview.yml) 页面找到最后一次提交的自动构建版本。
 
 系统要求：
 - .NET 7 桌面运行时
